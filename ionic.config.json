@@ -1,0 +1,7 @@
+{
+  "name": "dop-practice-ionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
