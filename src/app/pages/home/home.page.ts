@@ -1,5 +1,7 @@
-import { Component, OnInit, inject } from '@angular/core'
+import { Component, Inject, OnInit, inject } from '@angular/core'
 import { FormControl } from '@angular/forms'
+import { ModalController } from '@ionic/angular'
+import { TourModalComponent } from 'src/app/components/tour-modal/tour-modal.component'
 import { Tour, ToursService } from 'src/app/services/tours.service'
 
 @Component({
@@ -10,8 +12,7 @@ import { Tour, ToursService } from 'src/app/services/tours.service'
 export class HomePage implements OnInit {
   queryFilterField = new FormControl('')
   toursService = inject(ToursService)
-
-  tourToShowInModal: Tour | null = null
+  modalController = inject(ModalController)
 
   filteredTours = this.toursService.getTours()
 
@@ -29,12 +30,21 @@ export class HomePage implements OnInit {
     this.queryFilterField.setValue(event.detail.value)
   }
 
-  selectTourToShow(tour: Tour) {
-    this.tourToShowInModal = tour
+  async selectTourToShow(tour: Tour) {
+    const modal = await this.modalController.create({
+      component: TourModalComponent,
+      componentProps: {
+        tourToShowInModal: tour,
+        close: () => {
+          console.log('wilmer')
+        },
+      },
+    })
+    modal.present()
   }
 
   review(value: number): number[] {
-    const a =  Array.from(Array(value.toFixed(0) ?? 5).keys())
+    const a = Array.from(Array(value.toFixed(0) ?? 5).keys())
     console.log(a)
     return a
   }

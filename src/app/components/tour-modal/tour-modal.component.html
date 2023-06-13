@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detalle del tour</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="onClose()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <ion-text color="primary">
+    <h1>{{ tourToShowInModal!.name }}</h1>
+  </ion-text>
+
+  <ion-text color="medium">
+    <h4>Descripción</h4>
+  </ion-text>
+  <p>{{ tourToShowInModal!.description }}</p>
+
+  <ion-text color="medium">
+    <h4>Qué harás</h4>
+  </ion-text>
+  <p>{{ tourToShowInModal!.whatYouDo }}</p>
+
+  <ion-text color="medium">
+    <h4>Calificación</h4>
+  </ion-text>
+  <span>
+    <ion-icon color="warning" name="star" />
+    {{ tourToShowInModal!.review }}
+  </span>
+</ion-content>
