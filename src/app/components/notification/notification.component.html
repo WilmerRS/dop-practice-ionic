@@ -1,0 +1,26 @@
+<ion-item
+  *ngIf="notification"
+  [routerLink]="'/notification/' + notification.id"
+  [detail]="false">
+  <div
+    slot="start"
+    [class]="!notification.read ? 'dot dot-unread' : 'dot'"></div>
+  <ion-label class="ion-text-wrap">
+    <h2>
+      {{ notification.fromName }}
+      <span class="date">
+        <ion-note>{{ notification.date | date }}</ion-note>
+        <ion-icon
+          aria-hidden="true"
+          name="chevron-forward"
+          size="small"
+          *ngIf="isIos()">
+        </ion-icon>
+      </span>
+    </h2>
+    <h3>{{ notification.subject }}</h3>
+    <p>
+      {{ notification.content }}
+    </p>
+  </ion-label>
+</ion-item>

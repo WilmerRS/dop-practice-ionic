@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        [text]="getBackButtonText()"
+        defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" *ngIf="notification">
+  <ion-item>
+    <ion-icon
+      aria-hidden="true"
+      name="person-circle"
+      color="primary"></ion-icon>
+    <ion-label class="ion-text-wrap">
+      <h2>
+        {{ notification.fromName }}
+        <span class="date">
+          <ion-note>{{ notification.date | date }}</ion-note>
+        </span>
+      </h2>
+      <h3>To: <ion-note>Me</ion-note></h3>
+    </ion-label>
+  </ion-item>
+
+  <div class="ion-padding">
+    <h1>{{ notification.subject }}</h1>
+    <div>{{ notification.content }}</div>
+  </div>
+
+  <div class="ion-padding" *ngIf="notification.read">
+    <ion-button expand="block" (click)="markAsUnread()"
+      >Marcar como no leído
+    </ion-button>
+  </div>
+</ion-content>

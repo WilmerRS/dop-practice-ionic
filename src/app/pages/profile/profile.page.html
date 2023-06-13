@@ -1,0 +1,65 @@
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-avatar>
+        <img
+          src="https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg"
+          alt="Avatar del usuario" />
+      </ion-avatar>
+      <ion-card-title>Saúl García</ion-card-title>
+      <ion-card-subtitle>@Soul</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-card-subtitle class="description">
+        <ion-icon
+          color="primary"
+          size="large"
+          name="code-outline"
+          class="code-icon" />
+        <span>Apasionado de la programación.</span>
+      </ion-card-subtitle>
+      <ion-card-subtitle> </ion-card-subtitle>
+      <ion-grid>
+        <ion-row class="ion-align-items-center ion-justify-content-between">
+          <ion-col size="6">
+            <ion-chip color="success">Perfil verificado</ion-chip>
+          </ion-col>
+          <ion-col size="6">
+            <span>{{birthDate | date}}</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+    <ion-button [routerLink]="'/profile/edit'" fill="clear">
+      <ion-icon slot="start" name="pencil-outline" />
+      Editar
+    </ion-button>
+  </ion-card>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Ver Términos y Condiciones</ion-label>
+      <ion-icon slot="end" color="medium" size="small" name="chevron-forward" />
+    </ion-item>
+    <ion-item>
+      <ion-label>Contacto</ion-label>
+      <ion-icon slot="end" color="medium" size="small" name="chevron-forward" />
+    </ion-item>
+  </ion-list>
+
+  <ion-footer>
+    <div class="ion-padding">
+      <ion-button id="logout-button" expand="block" fill="outline">
+        <ion-icon name="log-out-outline" slot="start" />
+        Cerrar Sesión
+      </ion-button>
+    </div>
+
+    <ion-alert
+      trigger="logout-button"
+      header="¿Seguro de cerrar sesión?"
+      subHeader="Irás al menú de inicio"
+      message="Si cierras sesión ya no tendrás acceso a la app."
+      [buttons]="logoutConfirmButtons" />
+  </ion-footer>
+</ion-content>

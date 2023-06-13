@@ -1,0 +1,73 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Descartar" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Editar perfil</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content [fullscreen]="true">
+    <form class="ion-padding" novalidate>
+      <p>Ingrese todos los datos a continuación:</p>
+
+      <ion-item lines="full">
+        <ion-label position="floating">Username</ion-label>
+        <ion-input type="text" fill="solid" aria-label="userName"></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-label position="floating">Nombres y apellidos</ion-label>
+        <ion-input type="text" fill="solid" aria-label="fullName"></ion-input>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-label position="stacked">Fecha de nacimiento</ion-label>
+        <ion-datetime-button class="pb-3" datetime="birthDate-datetime" />
+
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime id="birthDate-datetime" />
+          </ng-template>
+        </ion-modal>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-select
+          label="Permisos"
+          labelPlacement="floating"
+          aria-label="Permisos"
+          multiple="true"
+          cancelText="Cancelar"
+          okText="Aceptar">
+          <ion-select-option value="permiso1"
+            >Crear notifiaciones</ion-select-option
+          >
+          <ion-select-option value="permiso2"
+            >Eliminar notificaciones</ion-select-option
+          >
+          <ion-select-option value="permiso3"
+            >Actualizar notificaciones</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-textarea
+          label="Descripción"
+          labelPlacement="floating"
+          fill="solid"
+          placeholder="Escribe una descripción larga sobre ti, tus gustos, pasatiempos y deseos." />
+      </ion-item>
+    </form>
+
+    <div class="ion-padding">
+      <ion-button expand="block">Guardar</ion-button>
+    </div>
+  </ion-content>
+</ion-content>
