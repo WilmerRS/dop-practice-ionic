@@ -2,7 +2,7 @@ import { Component, Inject, OnInit, inject } from '@angular/core'
 import { FormControl } from '@angular/forms'
 import { ModalController } from '@ionic/angular'
 import { TourModalComponent } from 'src/app/components/tour-modal/tour-modal.component'
-import { Tour, ToursService } from 'src/app/services/tours.service'
+import { Tour, ToursService } from 'src/app/services/tours/tours.service'
 
 @Component({
   selector: 'dop-home',
@@ -35,9 +35,6 @@ export class HomePage implements OnInit {
       component: TourModalComponent,
       componentProps: {
         tourToShowInModal: tour,
-        close: () => {
-          console.log('wilmer')
-        },
       },
     })
     modal.present()

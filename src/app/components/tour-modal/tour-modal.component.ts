@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common'
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core'
 import { IonicModule, ModalController } from '@ionic/angular'
-import { Tour } from 'src/app/services/tours.service'
+import { Tour } from 'src/app/services/tours/tours.service'
 
 @Component({
   selector: 'dop-tour-modal',

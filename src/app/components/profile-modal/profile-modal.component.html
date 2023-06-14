@@ -1,0 +1,26 @@
+<ion-content class="profile-page ion-padding">
+  <div class="profile-header">
+    <ion-avatar class="profile-avatar">
+      <img
+        src="https://media.sproutsocial.com/uploads/2022/06/profile-picture.jpeg"
+        alt="Avatar del usuario" />
+    </ion-avatar>
+    <h2 class="profile-username">@{{ profile.userName }}</h2>
+    <h3 class="profile-fullname">{{ profile.fullName }}</h3>
+    <p class="profile-birthdate">
+      Fecha de Nacimiento: {{ profile.birthDate | date : 'dd/MM/yyyy' }}
+    </p>
+  </div>
+
+  <div class="profile-content">
+    <h4 class="profile-section-heading">Descripción</h4>
+    <p class="profile-description">{{ profile.description }}</p>
+
+    <h4 class="profile-section-heading">Permisos</h4>
+    <ion-list lines="full">
+      <ion-item *ngFor="let permission of profile.permissions">
+        <ion-label>{{ permission }}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

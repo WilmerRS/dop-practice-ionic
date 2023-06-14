@@ -14,16 +14,24 @@
   </ion-header>
 
   <ion-content [fullscreen]="true">
-    <form class="ion-padding" novalidate>
+    <form [formGroup]="profileForm" class="ion-padding" novalidate>
       <p>Ingrese todos los datos a continuación:</p>
 
       <ion-item lines="full">
         <ion-label position="floating">Username</ion-label>
-        <ion-input type="text" fill="solid" aria-label="userName"></ion-input>
+        <ion-input
+          formControlName="userName"
+          type="text"
+          fill="solid"
+          aria-label="userName"></ion-input>
       </ion-item>
       <ion-item lines="full">
         <ion-label position="floating">Nombres y apellidos</ion-label>
-        <ion-input type="text" fill="solid" aria-label="fullName"></ion-input>
+        <ion-input
+          formControlName="fullName"
+          type="text"
+          fill="solid"
+          aria-label="fullName"></ion-input>
       </ion-item>
 
       <ion-item lines="full">
@@ -32,7 +40,7 @@
 
         <ion-modal [keepContentsMounted]="true">
           <ng-template>
-            <ion-datetime id="birthDate-datetime" />
+            <ion-datetime formControlName="birthDate" id="birthDate-datetime" />
           </ng-template>
         </ion-modal>
       </ion-item>
@@ -44,30 +52,41 @@
           aria-label="Permisos"
           multiple="true"
           cancelText="Cancelar"
-          okText="Aceptar">
-          <ion-select-option value="permiso1"
-            >Crear notifiaciones</ion-select-option
-          >
-          <ion-select-option value="permiso2"
-            >Eliminar notificaciones</ion-select-option
-          >
-          <ion-select-option value="permiso3"
-            >Actualizar notificaciones</ion-select-option
-          >
+          okText="Aceptar"
+          formControlName="permissions">
+          <ion-select-option
+            *ngFor="let permission of permissions"
+            [value]="permission">
+            {{permission}}
+          </ion-select-option>
         </ion-select>
       </ion-item>
 
       <ion-item lines="full">
         <ion-textarea
+          formControlName="description"
           label="Descripción"
           labelPlacement="floating"
           fill="solid"
           placeholder="Escribe una descripción larga sobre ti, tus gustos, pasatiempos y deseos." />
       </ion-item>
+
+      <div>
+        <ion-button (click)="submit()" expand="block">Guardar</ion-button>
+      </div>
     </form>
 
-    <div class="ion-padding">
-      <ion-button expand="block">Guardar</ion-button>
-    </div>
+    <ion-fab class="ion-padding" id="show-information" horizontal="right">
+      <ion-fab-button color="secondary">
+        <ion-icon name="information-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
   </ion-content>
+  <ion-popover trigger="show-information" triggerAction="click">
+    <ng-template>
+      <ion-content class="ion-padding"
+        >Debes llenar todos los campos para avanzar.</ion-content
+      >
+    </ng-template>
+  </ion-popover>
 </ion-content>
